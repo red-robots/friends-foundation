@@ -1,0 +1,19 @@
+.acf-field-flexible-content[data-name="flexible_content"] [data-label="Fullwidth Content"] [data-name="icon"],
+.acf-field-flexible-content[data-name="flexible_content"] [data-label="Fullwidth Content"] [data-name="textcolor"],
+.acf-field-flexible-content[data-name="flexible_content"] [data-label="Fullwidth Content"] [data-name="bgcolor"] {
+  width: 20%;
+  height: 120px;
+  float: left;
+  box-sizing: border-box;
+  clear: unset;
+}
+.acf-field-flexible-content[data-name="flexible_content"] [data-label="Fullwidth Content"] [data-name="bgcolor"] {
+  width: 60%;
+}
+.acf-field-flexible-content[data-name="flexible_content"] [data-label="Fullwidth Content"] [data-name="icon"] .image-wrap img {
+  max-height: 60px !important;
+  height: 60px !important;
+  width: auto;
+  min-height: 60px;
+  min-width: 60px;
+}
