@@ -211,6 +211,9 @@ h6 {font-size: 28px;}
       object-fit: cover;
       object-position: center;
     }
+    &.hero-image {
+      height: 100%;
+    }
   }
   .hero-video {
     width: 100%;

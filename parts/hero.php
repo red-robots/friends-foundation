@@ -1,10 +1,10 @@
 <?php
 $hero_type = get_field('hero_type');
-$hero = get_field('hero_image');
+$hero_image = get_field('hero_image');
 $hero_video_url = get_field('hero_video_url');
 $videos['youtube'] = ['youtube','youtu.be'];
 $videos['vimeo'] = ['vimeo.com'];
-if($hero) { ?>
+if($hero_image || $hero_video_url) { ?>
   <?php if (is_front_page()) { ?>
   <?php  
     $hero_title = get_field('hero_title');
@@ -12,9 +12,11 @@ if($hero) { ?>
   ?>
   <section class="hero-section">
     <?php if ($hero_type=='image') { ?>
-    <figure class="hero-graphic hero-image">
-      <img src="<?php echo $hero['url'] ?>" alt="<?php echo $hero['title'] ?>">
-    </figure>
+      <?php if ($hero_image) { ?>
+      <figure class="hero-graphic hero-image">
+        <img src="<?php echo $hero_image['url'] ?>" alt="<?php echo $hero_image['title'] ?>">
+      </figure>
+      <?php } ?>
     <?php } else { ?>
       <?php if ($hero_video_url) { ?>
       <div class="hero-graphic hero-video">
