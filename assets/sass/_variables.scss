@@ -3,14 +3,12 @@ $color_link_visited: purple;
 $color_link_hover: midnightblue;
 // $color_text_main: #868686;
 $color_text_main: #5a5a5a;
-$primary: #0F6F39;
-$secondary: #0E1329;
-$blue: #1E4174;
+$primary: #124F9E;
+$secondary: #DD1E34;
+$lightblue: #54ABDF;
 
-//$font_primary: "Manrope", sans-serif;
-$font_primary: "Avenir", "Manrope", sans-serif;
-$font_secondary: "Roboto", sans-serif;
-$fontNav: "Poppins", sans-serif;
+$font_primary: "Gibson", "Avenir", sans-serif;
+$font_secondary: "BigCaslon", "Times", serif;
 
 $portrait:600px;
 $xswidth: 768px;
@@ -18,7 +16,7 @@ $tabwidth: 880px;
 $midwidth: 980px;
 $deskwidth: 1200px;
 $xxl: 1300px;
-$wrapper: 1400px;
+$wrapper: 90vw;
 
 
 @mixin xxs { @media (min-width: $portrait) { @content; } }

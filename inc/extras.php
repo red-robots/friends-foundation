@@ -166,6 +166,20 @@ function social_icons() {
     return $social_types;
 }
 
+function getYoutubeVideoId($url) {
+  // preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+  // $youtube_id = $match[1];
+  // return $youtube_id;
+  if (stristr($url,'youtu.be/')) {
+    preg_match('/(https:|http:|)(\/\/www\.|\/\/|)(.*?)\/(.{11})/i', $url, $final_ID); 
+    return $final_ID[4]; 
+  } else {
+    @preg_match('/(https:|http:|):(\/\/www\.|\/\/|)(.*?)\/(embed\/|watch.*?v=|)([a-z_A-Z0-9\-]{11})/i', $url, $IDD); 
+    return $IDD[5]; 
+  }
+}
+
+
 function parse_external_url( $url = '', $internal_class = 'internal-link', $external_class = 'external-link') {
 
     $url = trim($url);

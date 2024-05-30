@@ -53,12 +53,6 @@
   <span class="loader"></span>
 </div>
 
-<div class="popupContainer">
-  <div class="popupInner animated fadeInDown">
-    <a href="javascript:void(0)" class="close-popup" role="button"><span class="sr-only">close</span><i class="fa fa-times" aria-hidden="true"></i></a>
-    <div id="popupContent"></div>
-  </div>
-</div>
 <?php wp_footer(); ?>
 </body>
 </html>

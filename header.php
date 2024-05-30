@@ -51,12 +51,17 @@ $featImg = wp_get_attachment_image_src($thumbId,'full'); ?>
         <a href="#" id="menu-toggle" class="menu-toggle" aria-label="Menu Toggle"><span class="sr">Menu</span><span class="bar"></span></a>
         <nav id="site-navigation" class="main-navigation" role="navigation">
           <?php
+          $donate = get_field('donate_link','option');
+          $donateBtnTitle = (isset($donate['title']) && $donate['title']) ? $donate['title'] : 'Donate';
+          $donateBtnUrl = (isset($donate['url']) && $donate['url']) ? $donate['url'] : '';
+          $donateBtnTarget = (isset($donate['target']) && $donate['target']) ? $donate['target'] : '_self';
+          $donate_button = ($donateBtnTitle && $donateBtnUrl) ? '<li class="donateLink"><a href="'.$donateBtnUrl.'" target="'.$donateBtnTarget.'" class="donate-button">'.$donateBtnTitle.'</a></li>':'';
           wp_nav_menu(
             array(
               'theme_location'  => 'primary',
               'menu_class'      => 'menu-wrapper',
               'container_class' => 'primary-menu-container',
-              'items_wrap'      => '<ul id="primary-menu-list" class="%2$s">%3$s</ul>',
+              'items_wrap'      => '<ul id="primary-menu-list" class="%2$s">%3$s'.$donate_button.'</ul>',
               'fallback_cb'     => false,
             )
           );
