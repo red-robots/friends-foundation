@@ -6,9 +6,9 @@
       
       // Add Button to Visual Editor Toolbar
       editor.addButton('edbutton1', {
-          title: 'Button Green',
+          title: 'Button Red',
           cmd: 'edbutton1',
-          image: themeURL + 'assets/img/button-green.png',
+          image: themeURL + 'assets/img/button-red.png',
       });
 
       // Add Command when Button Clicked
@@ -18,7 +18,7 @@
             alert( 'Please select some text.' );
             return;
         }
-        var open_column = '<span class="custom-button-element green"><a data-mce-href="#" href="#"  data-mce-selected="inline-boundary" class="button-element button">';
+        var open_column = '<span class="custom-button-element red"><a data-mce-href="#" href="#"  data-mce-selected="inline-boundary" class="button-element button">';
         var close_column = '</a></span>';
         var return_text = '';
         return_text = open_column + selected_text + close_column;

@@ -671,7 +671,19 @@ add_action('acf/input/admin_footer', 'bella_acf_input_admin_footer');
 
 
 function page_has_hero() {
-  $hero = get_field('hero_image');
-  return ($hero) ? $hero : false;
+  $is_true = false;
+  $hero_type = get_field('hero_type');
+  $hero_image = get_field('hero_image');
+  $hero_video_url = get_field('hero_video_url');
+  if($hero_type=='image') {
+    if($hero_image) {
+      $is_true = true;
+    }
+  } else {
+    if($hero_video_url) {
+      $is_true = true;
+    }
+  }
+  return $is_true;
 }
 
