@@ -9,11 +9,15 @@
       $content = get_sub_field('content');
       $bgcolor = get_sub_field('bgcolor');
       $textcolor = get_sub_field('textcolor');
-      $swoosh_color = get_sub_field('swoosh_color');
-      $swoosh = ($swoosh_color) ? $swoosh_color : 'red';
       $image = get_sub_field('image');
-      $styles = '';
+      $has_swoosh = get_sub_field('has_swoosh');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
       $section_class = ( ($title || $content) && $image ) ? ' twocol':' onecol';
+      $styles = '';
       if($bgcolor) {
         $styles .= 'background-color:'.$bgcolor.';';
       }
@@ -29,7 +33,7 @@
           <div class="textCol">
             <div class="inner">
             <?php if ($title) { ?>
-              <h2 class="blockTitle <?php echo $swoosh ?>"><?php echo $title ?></h2>
+              <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $title ?></h2>
             <?php } ?>
             <?php if ($content) { ?>
               <div class="blockText"><?php echo $content ?></div>
@@ -53,13 +57,17 @@
       <?php  
       $block_title = get_sub_field('block_title');
       $columns = get_sub_field('columns');
-      $swoosh_color = get_sub_field('swoosh_color');
-      $swoosh = ($swoosh_color) ? $swoosh_color : 'red';
+      $has_swoosh = get_sub_field('has_swoosh');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
       ?>
       <section id="section-three_column_block-<?php echo $i ?>" class="repeatable-block section-three_column_block">
         <div class="wrapper">
           <?php if ($block_title) { ?>
-            <h2 class="blockTitle <?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
           <?php } ?>
 
           <?php if ($columns) { ?>
@@ -100,6 +108,103 @@
           <?php } ?>
         </div>
       </section>
+    <?php } ?>
+
+    <?php if( get_row_layout() == 'gallery_block' ) { ?>
+      <?php  
+      $block_title = get_sub_field('block_title');
+      $gallery = get_sub_field('gallery');
+      $is_rounded = get_sub_field('rounded_images');
+      $rounded_images = ($is_rounded) ? ' rounded-images':'';
+      $title_color = get_sub_field('title_color');
+      $bgcolor = get_sub_field('bgcolor');
+      $styles = ($title_color || $bgcolor) ? true : false;
+      if($styles) { ?>
+      <style>
+        #section-gallery_block-<?php echo $i ?> {background-color:<?php echo $bgcolor ?>;}
+        #section-gallery_block-<?php echo $i ?> h2 {color:<?php echo $title_color ?>;}
+      </style>
+      <?php } ?>
+      <section id="section-gallery_block-<?php echo $i ?>" class="repeatable-block section-gallery_block">
+        <div class="section-inner">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <?php if ($gallery) { ?>
+          <div class="gallery-images-grid<?php echo $rounded_images ?>">
+            <?php foreach ($gallery as $img) { 
+              $click = get_field('clickthrough', $img['ID']);
+              $imgLink = (isset($click['url']) && $click['url']) ? $click['url'] : '';
+              $imgTitle = (isset($click['title']) && $click['title']) ? $click['title'] : '';
+              $imgTarget = (isset($click['target']) && $click['target']) ? $click['target'] : '_self';
+            ?>
+            <figure class="gallery-item">
+              <?php if ($imgLink) { ?>
+              <a href="<?php echo $imgLink ?>" target="<?php echo $imgTarget ?>" class="inner">
+                <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['title'] ?>">
+              </a>
+              <?php } else { ?>
+              <div class="inner">
+                <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['title'] ?>">
+              </div>
+              <?php } ?>
+            </figure> 
+            <?php } ?>
+          </div>  
+          <?php } ?>
+        </div>
+      </section>
+    <?php } ?>
+
+    <?php if( get_row_layout() == 'icons_buttons' ) { ?>
+      <?php  
+      $icon_info = get_sub_field('icon_info');
+      $bgcolor = get_sub_field('bgcolor');
+      $textcolor = get_sub_field('textcolor');
+      $styles = ($textcolor || $bgcolor) ? true : false;
+      if($styles) { ?>
+      <style>
+        #section-icons_buttons-<?php echo $i ?> {background-color:<?php echo $bgcolor ?>;color:<?php echo $textcolor ?>;}
+      </style>
+      <?php } 
+      if($icon_info) { ?>
+      <section id="section-icons_buttons-<?php echo $i ?>" class="repeatable-block section-icons_buttons">
+        <div class="wrapper">
+          <div class="flexbox">
+          <?php foreach ($icon_info as $icon) { 
+            $iconImg = $icon['icon'];
+            $description = $icon['description'];
+            $btn = $icon['button'];
+            $btnUrl = (isset($btn['url']) && $btn['url']) ? $btn['url'] : '';
+            $btnTitle = (isset($btn['title']) && $btn['title']) ? $btn['title'] : '';
+            $btnTarget = (isset($btn['target']) && $btn['target']) ? $btn['target'] : '_self';
+            ?>
+            <?php if ($iconImg || $description) { ?>
+            <div class="flexcol">
+              <div class="inside">
+                <?php if ($iconImg) { ?>
+                  <figure class="icon">
+                    <span style="background-image:url('<?php echo $iconImg['url'] ?>')"></span>
+                  </figure>
+                <?php } ?>
+                <?php if ($btnUrl && $btnTitle) { ?>
+                  <div class="buttondiv">
+                    <a href="<?php echo $btnUrl ?>" target="<?php echo $btnTarget ?>" class="button"><?php echo $btnTitle ?></a>
+                  </div>
+                <?php } ?>
+                <?php if ($description) { ?>
+                  <div class="description">
+                    <?php echo $description ?>
+                  </div>
+                <?php } ?>
+              </div>
+            </div>
+            <?php } ?>
+          <?php } ?>
+          </div>
+        </div>
+      </section>
+      <?php } ?>
     <?php } ?>
 
 
