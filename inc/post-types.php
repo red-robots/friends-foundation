@@ -8,23 +8,32 @@
 add_action('init', 'js_custom_init', 1);
 function js_custom_init() {
     $post_types = array(
+      // array(
+      //   'post_type' => 'projects',
+      //   'menu_name' => 'Projects',
+      //   'plural'    => 'Projects',
+      //   'single'    => 'Project',
+      //   'menu_icon' => 'dashicons-category',
+      //   'menu_position'=> 5,
+      //   'supports'  => array('title','editor','thumbnail'),
+      // ),
+      // array(
+      //   'post_type' => 'team',
+      //   'menu_name' => 'Team',
+      //   'plural'    => 'Team',
+      //   'single'    => 'Team',
+      //   'menu_icon' => 'dashicons-businessman',
+      //   'menu_position'=> 5,
+      //   'supports'  => array('title','editor')
+      // )
       array(
-        'post_type' => 'projects',
-        'menu_name' => 'Projects',
-        'plural'    => 'Projects',
-        'single'    => 'Project',
-        'menu_icon' => 'dashicons-category',
-        'menu_position'=> 5,
-        'supports'  => array('title','editor','thumbnail'),
-      ),
-      array(
-        'post_type' => 'team',
-        'menu_name' => 'Team',
-        'plural'    => 'Team',
-        'single'    => 'Team',
-        'menu_icon' => 'dashicons-businessman',
-        'menu_position'=> 5,
-        'supports'  => array('title','editor')
+        'post_type' => 'testimonials',
+        'menu_name' => 'Testimonials',
+        'plural'    => 'Testimonials',
+        'single'    => 'Testimonial',
+        'menu_icon' => 'dashicons-format-quote',
+        'menu_position'=> 20,
+        'supports'  => array('title','editor'),
       )
     );
     

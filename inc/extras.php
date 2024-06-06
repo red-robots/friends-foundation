@@ -156,7 +156,7 @@ function get_social_media() {
 
 function social_icons() {
     $social_types = array(
-        'facebook'  => 'fab fa-facebook-square',
+        'facebook'  => 'fab fa-facebook',
         'twitter'   => 'fab fa-twitter',
         'linkedin'  => 'fab fa-linkedin',
         'instagram' => 'fab fa-instagram',
