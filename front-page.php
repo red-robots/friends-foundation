@@ -10,6 +10,5 @@
   <?php endwhile; ?>
   </main>
 </div>
-<?php get_template_part('parts/home-testimonials') ?>
 <?php
 get_footer();

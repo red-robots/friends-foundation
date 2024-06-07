@@ -7,10 +7,15 @@
     $phone = get_field('phone','option'); 
 
   ?>
+
+  <?php get_template_part('parts/home-testimonials') ?>
+  
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="wrapper">
 
 			<?php if ($footLogo || $branches) { ?>
+       
+
        <div class="flexwrap">
           <div class="footcol footLogo">
            <?php if ($footLogo) { ?>
