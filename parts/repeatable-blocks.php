@@ -25,7 +25,10 @@
         $styles .= 'color:'.$textcolor.';';
       }
       if($styles) { ?>
-      <style>#section-two_column_text_image-<?php echo $i ?> .textCol { <?php echo $styles ?> }</style>
+      <style>
+          #section-two_column_text_image-<?php echo $i ?> .textCol { <?php echo $styles ?> } 
+          #section-two_column_text_image-<?php echo $i ?> .blockTitle{color:<?php echo $textcolor ?>!important;}
+      </style>
       <?php } ?>
       <section id="section-two_column_text_image-<?php echo $i ?>" class="repeatable-block section-two_column_text_image text-<?php echo $text_position ?><?php echo $section_class ?>">
         <div class="flexbox">
