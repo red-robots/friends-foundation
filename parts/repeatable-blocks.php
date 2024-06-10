@@ -208,5 +208,93 @@
     <?php } ?>
 
 
+    <?php if( get_row_layout() == 'fullwidth_text_block' ) { ?>
+      <?php  
+      $block_title = get_sub_field('block_title');
+      $textcontent = get_sub_field('textcontent');
+      $cta_buttons = get_sub_field('cta_buttons');
+      $has_swoosh = get_sub_field('has_swoosh');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
+      ?>
+      <section id="section-fullwidth_text_block-<?php echo $i ?>" class="repeatable-block section-fullwidth_text_block">
+        <div class="wrapper">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <?php if ($textcontent || $cta_buttons) { ?>
+            <div class="blockText">
+              <div class="textwrap">
+                <?php echo $textcontent ?>    
+              </div>
+              <?php if ($cta_buttons) { ?>
+                <div class="buttons-block">
+                  <?php foreach ($cta_buttons as $cta) { 
+                    $btn = $cta['button'];
+                    $btnlink = (isset($btn['url']) && $btn['url']) ? $btn['url'] : '';
+                    $btntitle = (isset($btn['title']) && $btn['title']) ? $btn['title'] : '';
+                    $btntarget = (isset($btn['target']) && $btn['target']) ? $btn['target'] : '_self';
+                    if($btntitle && $btnlink) { ?>
+                      <a href="<?php echo $btnlink ?>" target="<?php echo $btntarget ?>" class="button"><?php echo $btntitle ?></a>
+                    <?php } ?>
+                  <?php } ?>
+                </div>
+              <?php } ?>
+            </div>
+          <?php } ?>
+            
+        </div>
+      </section>
+    <?php } ?>
+
+    <?php if( get_row_layout() == 'Boxes_checkboxes' ) { ?>
+      <?php  
+      $block_title = get_sub_field('block_title');
+      $textcontent = get_sub_field('textcontent');
+      $column_content = get_sub_field('column_content');
+      //$cta_buttons = get_sub_field('cta_buttons');
+      $has_swoosh = get_sub_field('has_swoosh');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
+      ?>
+      <section id="section-boxes_checkboxes-<?php echo $i ?>" class="repeatable-block section-boxes_checkboxes">
+        <div class="wrapper">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <?php if ($textcontent || $column_content) { ?>
+            <div class="blockText">
+              <div class="textwrap">
+                <?php echo $textcontent ?>    
+              </div>
+              
+              <?php if ($column_content) { ?>
+              <div class="column-content-checkboxes">
+                <?php foreach ($column_content as $col) { 
+                  $bulletType = $col['bullet_point_type'];
+                  $content = $col['content'];
+                  ?>
+                  <div class="textCol <?php echo $bulletType ?>">
+                    <div class="inner">
+                      <?php echo $content ?>
+                    </div>
+                  </div>
+                <?php } ?>
+              </div> 
+              <?php } ?>
+            </div>
+          <?php } ?>
+            
+        </div>
+      </section>
+    <?php } ?>
+
+
   <?php $i++; endwhile; ?>
 <?php } ?>

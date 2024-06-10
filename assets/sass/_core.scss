@@ -353,6 +353,7 @@ h6 {font-size: 28px;}
     margin: 0 0;
     position: relative;
     text-align: center;
+    color: $primary;
     &.has-swoosh {
       &:after {
         content:"";
@@ -662,6 +663,115 @@ h6 {font-size: 28px;}
     &.rounded-images {
       figure {
 
+      }
+    }
+  }
+}
+
+.section-fullwidth_text_block {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  .blockTitle {
+    margin-bottom: 50px;
+  }
+  .blockText {
+    color: $primary;
+  }
+}
+
+.section-boxes_checkboxes {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  .blockTitle {
+    margin-bottom: 50px;
+  }
+  .blockText {
+    color: $primary;
+  }
+  .textwrap {
+    margin-bottom: 50px;
+  }
+  .column-content-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px 0;
+    .textCol {
+      width: 48.5%;
+      padding: 30px;
+      border: 1px solid #CCC;
+      background: #FFF;
+      box-shadow: 0 2px 5px rgba(0,0,0,.2);
+      @media screen and (min-width: 1300px) {
+        padding: 8vw 6vw;
+      }
+      @media screen and (max-width: 820px) {
+        width: 100%;
+        margin: 20px 0;
+        padding: 40px 40px;
+      }
+      h2 {
+        margin: 0 0 1em;
+        font-family: $font_secondary!important;
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.2;
+        text-align: center;
+      }
+
+      ul {
+        margin: 0 0;
+        padding: 0 0;
+        list-style: none;
+      }
+
+      &.check {
+        ul > li {
+          position: relative;
+          padding: 9px 8px 8px 20px;
+          border-bottom: 1px solid #DDD;
+          &:before, &:after {
+            content:"";
+            display: block;
+            position: absolute;
+            top: 17px;
+            left: 0;
+            height: 2px;
+            background: $secondary;
+          }
+          &:before {
+            width: 7px;
+            transform: translateY(2px) translateX(-4px) rotate(45deg);
+          }
+          &:after {
+            width: 10px;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+
+      &.ex {
+        ul > li {
+          position: relative;
+          padding: 10px 8px 8px 20px;
+          border-bottom: 1px solid #DDD;
+          &:before, &:after {
+            content:"";
+            display: block;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 10px;
+            height: 2px;
+            background: $secondary;
+          }
+          &:before {
+            transform: rotate(45deg);
+          }
+          &:after {
+            transform: rotate(-45deg);
+          }
+        }
       }
     }
   }
