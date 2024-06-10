@@ -1423,6 +1423,7 @@ h6{font-size:28px}
 .testimonials-section .swiper-slide .author{font-style:italic;font-weight:400;letter-spacing:.05em;color:#a8a8a8;margin-bottom:30px}
 .testimonials-section .swiper-pagination{bottom:-20px}
 .testimonials-section .swiper-pagination-bullet.swiper-pagination-bullet-active{background:#dd1e34}
+body:not(.home) #primary #main{background-color:#f6f7f8}
 @media screen and (min-width:1300px){.section-two_column_text_image .textCol{padding:5vw}
 .section-three_column_block .flexbox{margin-left:-40px;margin-right:-40px}
 .section-three_column_block .flexbox .flexcol{padding:30px 40px}

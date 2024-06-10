@@ -1341,5 +1341,11 @@ h6 {font-size: 28px;}
 }
 
 
+body:not(.home) {
+  #primary #main {
+    background-color: #F6F7F8;
+  }
+}
+
 
 
