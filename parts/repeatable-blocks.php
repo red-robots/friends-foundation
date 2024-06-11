@@ -240,8 +240,12 @@
         $imgWidth = 20;
       }
       $section_classes = '';
+      $textBlockStyle = '';
       if($featured_image) {
         $section_classes = ' has-featured-image';
+        $textBlockStyle = ' style="width:'.$textWidth.'%"';
+      } else {
+        $textBlockStyle = ' style="width:100%;padding-left:5vw;padding-right:5vw"';
       }
       ?>
       <section id="section-fullwidth_text_block-<?php echo $i ?>" class="repeatable-block section-fullwidth_text_block<?php echo $section_classes ?>">
@@ -251,7 +255,7 @@
           <?php } ?>
           <?php if ($textcontent || $cta_buttons || $featured_image) { ?>
             <div class="textWrapper <?php echo ($image_position) ? 'has-image image-'.$image_position : '' ?>">
-              <div class="blockText" style="width:<?php echo $textWidth ?>%">
+              <div class="blockText"<?php echo $textBlockStyle ?>>
                 <div class="textwrap">
                   <?php echo $textcontent ?>    
                 </div>
