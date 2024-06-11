@@ -663,6 +663,21 @@ function bella_acf_input_admin_footer() { ?>
     args.palettes = ['#0F6F39','#0E1329','#F26522','#FEBC11','#ed5e6b','#FFFFFF','#808184']
     return args;
   });
+
+  if ( typeof acf !== 'undefined' ) {
+    acf.add_action( 'wysiwyg_tinymce_init', function( ed, id, mceInit, $field ) {
+
+      // set height of wysiwyg on frontend
+      var minHeight = 200;
+      var mceHeight = $( ed.iframeElement ).contents().find( 'html' ).height() || minHeight;
+
+      if ( mceHeight < minHeight ) {
+        mceHeight = minHeight;
+      }
+
+      $( ed.iframeElement ).css( 'height', mceHeight );
+    } );
+  }
 })(jQuery); 
 </script>
 <?php
@@ -686,4 +701,6 @@ function page_has_hero() {
   }
   return $is_true;
 }
+
+
 

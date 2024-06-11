@@ -21,8 +21,9 @@ p {
   line-height: 1.75;
 }
 b, strong {
-  font-weight: 600;
+  font-weight: 500;
 }
+
 a,input,button,textarea {
   transition: all ease .3s;
 }
@@ -160,6 +161,8 @@ h6 {font-size: 28px;}
       text-decoration: none;
       color: $primary;
       letter-spacing: 0.04em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
   }
 
@@ -341,7 +344,7 @@ h6 {font-size: 28px;}
 }
 
 .repeatable-block {
-  .flexbox {
+  .flexwrap, .flexbox {
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -354,6 +357,15 @@ h6 {font-size: 28px;}
     position: relative;
     text-align: center;
     color: $primary;
+    &.text-left {
+      text-align: left;
+    }
+    &.text-right {
+      text-align: right;
+    }
+    &.text-center {
+      text-align: center;
+    }
     &.has-swoosh {
       &:after {
         content:"";
@@ -369,6 +381,28 @@ h6 {font-size: 28px;}
       }
       &.red:after {
         background-image: url('assets/img/swoosh-red.svg');
+      }
+      &.text-left {
+        &:after {
+          background-position: left;
+        }
+      }
+      &.text-right {
+        &:after {
+          background-position: right;
+        }
+      }
+      &.text-center {
+        &:after {
+          background-position: center;
+        }
+      }
+    }
+  }
+  .textwrap {
+    p:has(img) {
+      img.alignright {
+        float: right;
       }
     }
   }
@@ -403,6 +437,19 @@ h6 {font-size: 28px;}
     &:hover, &:focus {
       background-color: #FFF;
       color: #DD1E34!important;
+    }
+  }
+  .buttons-block {
+    display: flex;
+    gap: 1.35em;
+    &.left {
+      justify-content: flex-start;
+    }
+    &.right {
+      justify-content: flex-end;
+    }
+    &.center {
+      justify-content: center;
     }
   }
 }
@@ -677,6 +724,57 @@ h6 {font-size: 28px;}
   .blockText {
     color: $primary;
   }
+  .textWrapper {
+    &.has-image {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .blockText {
+        padding-right: 4vw;
+      }
+      .image-block  {
+        margin: 0 0;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      &.image-left {
+        flex-direction: row-reverse;
+        .blockText {
+          padding-left: 4vw;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+  &.has-featured-image {
+    .blockTitle {
+      margin-bottom: 20px;
+    }
+  }
+
+  @media screen and (max-width:960px) {
+    .textWrapper {
+      .blockText,
+      .image-block {
+        width: 100%!important;
+      }
+      .blockText {
+        padding-left: 0!important;
+        padding-right: 0!important;
+      }
+      .image-block {
+        margin-top: 30px!important;
+        img {
+          display: block;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
 }
 
 .section-boxes_checkboxes {
@@ -777,10 +875,143 @@ h6 {font-size: 28px;}
   }
 }
 
+.section-heart_middle_section {
+  background: $lightblue;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: #FFF;
+  position: relative;
+  overflow: hidden;
+  // .heart-graphic {
+  //   display: inline-block;
+  //   width: 70px;
+  //   height: 70px;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translateX(-50%) translateY(-50%);
+  //   background-image: url('assets/img/heart.svg');
+  //   background-size: contain;
+  //   background-repeat: no-repeat;
+  //   background-position: center;
+  //   z-index: 10;
+  // }
+  @media screen and (min-width: 1025px) {
+    &.numrows-1 {
+      .fxcol:first-child {
+        &:before {
+          content:"";
+          display: inline-block;
+          width: 70px;
+          height: 70px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          background-image: url('assets/img/heart.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          z-index: 10;
+        }
+      }
+    }
+    &.numrows-2 {
+      .fxcol:first-child {
+        &:before {
+          content:"";
+          display: inline-block;
+          width: 70px;
+          height: 70px;
+          position: absolute;
+          bottom: -35px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-image: url('assets/img/heart.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          z-index: 10;
+        }
+      }
+    }
+  }
+  .blockTitle {
+    color: #FFF!important;
+  }
+  .fxcol {
+    min-height: 40em;
+    position: relative;
+    .textBox {
+      padding: 50px 30px;
+      @media screen and (min-width: 1025px) {
+        padding: 5vw 7vw;
+      }
+    }
+    &.half {
+      display: flex;
+      flex-wrap: wrap;
+      .textBox,
+      .imageBox {
+        width: 100%;
+        @media screen and (min-width: 1025px) {
+          width: 50%;
+        }
+      }
+      .imageBox {
+        margin: 0 0;
+        position: relative;
+        img {
+          width: 100%;
+          height: auto;
+          @media screen and (min-width: 1025px) {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            object-position: top;
+          }
+        }
+      }
+      &.even {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .heart-graphic {
+      display: none!important;
+    }
+    .fxcol:last-child {
+      overflow: visible;
+      &:before {
+        content:"";
+        display: inline-block;
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        top: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-image: url('assets/img/heart.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 10;
+      }
+      .imageBox {
+        bottom: -10px;
+      }
+    }
+  }
+}
+
 .button {
   display: inline-block;
   text-decoration: none;
-  padding: 7px 20px 5px;
+  padding: 10px 20px 8px;
   color: #fff;
   min-width: 200px;
   text-align: center;
@@ -1146,6 +1377,83 @@ h6 {font-size: 28px;}
   }
 }
 
+.section-three_columns_with_numbers {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  // background: rgba($lightblue,60%);
+  background: $lightblue;
+  @media screen and (min-width: 1500px) {
+    padding-top: 70px;
+    padding-bottom: 90px;
+  }
+  .blockTitle {
+    color: #FFF;
+  }
+  .buttons-block {
+    margin-top: 15px;
+  }
+  .textwrap {
+    color: $primary;
+    margin-bottom: 35px;
+    * {
+      font-size: 1.15rem;
+      letter-spacing: .035em;
+      line-height: 1.5;
+    }
+  }
+  .flexwrap {
+    margin-left: -20px;
+    margin-right: -20px;
+    justify-content: center;
+  }
+  .fxcol {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    @media screen and (min-width: 821px) {
+      width: 33.333%;
+    }
+    @media screen and (min-width: 1600px) {
+      padding: 20px 5vw;
+    }
+    .number {
+      margin-bottom: 20px;
+      @media screen and (min-width: 821px) {
+        margin-bottom: 35px;
+      }
+      span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 75px;
+        height: 75px;
+        background: $primary;
+        color: #FFF;
+        font-family: $font_secondary;
+        font-size: 2.65rem;
+        line-height: 1;
+        border-radius: 100%;
+        em {
+          display: inline-block;
+          font-style: normal;
+          position: relative;
+          top: 2px;
+        }
+      }
+    }
+    .text {
+      color: $primary;
+      * {
+        font-size: 1.15rem;
+        letter-spacing: .035em;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+
+/*=== TESTIMONIALS ===*/
 .testimonials-section {
   .flexwrap {
     min-height: 40em;

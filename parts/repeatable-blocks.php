@@ -214,41 +214,68 @@
     <?php if( get_row_layout() == 'fullwidth_text_block' ) { ?>
       <?php  
       $block_title = get_sub_field('block_title');
+      $block_title_alignment = get_sub_field('block_title_alignment');
       $textcontent = get_sub_field('textcontent');
       $cta_buttons = get_sub_field('cta_buttons');
+      $featured_image = get_sub_field('featured_image');
+      $image_position = get_sub_field('image_position');
+      $image_width = get_sub_field('image_width');
+      $imgWidth = ($image_width) ? $image_width : 20;
+      $textWidth = 100 - $imgWidth;
       $has_swoosh = get_sub_field('has_swoosh');
       $swoosh = '';
+      $classes = array();
       if($has_swoosh) {
         $swoosh_color = get_sub_field('swoosh_color');
-        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+        $classes[] = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
+      if($block_title_alignment) {
+        $classes[] = 'text-' . $block_title_alignment;
+      }
+      if($classes) {
+        $swoosh = implode(' ',$classes);
+      }
+      if($textWidth < 10) {
+        $textWidth = 80;
+        $imgWidth = 20;
+      }
+      $section_classes = '';
+      if($featured_image) {
+        $section_classes = ' has-featured-image';
       }
       ?>
-      <section id="section-fullwidth_text_block-<?php echo $i ?>" class="repeatable-block section-fullwidth_text_block">
+      <section id="section-fullwidth_text_block-<?php echo $i ?>" class="repeatable-block section-fullwidth_text_block<?php echo $section_classes ?>">
         <div class="wrapper">
           <?php if ($block_title) { ?>
             <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
           <?php } ?>
-          <?php if ($textcontent || $cta_buttons) { ?>
-            <div class="blockText">
-              <div class="textwrap">
-                <?php echo $textcontent ?>    
-              </div>
-              <?php if ($cta_buttons) { ?>
-                <div class="buttons-block">
-                  <?php foreach ($cta_buttons as $cta) { 
-                    $btn = $cta['button'];
-                    $btnlink = (isset($btn['url']) && $btn['url']) ? $btn['url'] : '';
-                    $btntitle = (isset($btn['title']) && $btn['title']) ? $btn['title'] : '';
-                    $btntarget = (isset($btn['target']) && $btn['target']) ? $btn['target'] : '_self';
-                    if($btntitle && $btnlink) { ?>
-                      <a href="<?php echo $btnlink ?>" target="<?php echo $btntarget ?>" class="button"><?php echo $btntitle ?></a>
-                    <?php } ?>
-                  <?php } ?>
+          <?php if ($textcontent || $cta_buttons || $featured_image) { ?>
+            <div class="textWrapper <?php echo ($image_position) ? 'has-image image-'.$image_position : '' ?>">
+              <div class="blockText" style="width:<?php echo $textWidth ?>%">
+                <div class="textwrap">
+                  <?php echo $textcontent ?>    
                 </div>
+                <?php if ($cta_buttons) { ?>
+                  <div class="buttons-block">
+                    <?php foreach ($cta_buttons as $cta) { 
+                      $btn = $cta['button'];
+                      $btnlink = (isset($btn['url']) && $btn['url']) ? $btn['url'] : '';
+                      $btntitle = (isset($btn['title']) && $btn['title']) ? $btn['title'] : '';
+                      $btntarget = (isset($btn['target']) && $btn['target']) ? $btn['target'] : '_self';
+                      if($btntitle && $btnlink) { ?>
+                        <a href="<?php echo $btnlink ?>" target="<?php echo $btntarget ?>" class="button"><?php echo $btntitle ?></a>
+                      <?php } ?>
+                    <?php } ?>
+                  </div>
+                <?php } ?>
+              </div>
+              <?php if ($featured_image) { ?>
+              <figure class="image-block <?php echo $image_position ?>" style="width:<?php echo $imgWidth ?>%">
+                <img src="<?php echo $featured_image['url'] ?>" alt="<?php echo $featured_image['title'] ?>">
+              </figure> 
               <?php } ?>
             </div>
           <?php } ?>
-            
         </div>
       </section>
     <?php } ?>
@@ -298,6 +325,124 @@
       </section>
     <?php } ?>
 
+    <?php if( get_row_layout() == 'three_columns_with_numbers' ) { ?>
+      <?php  
+        $block_title = get_sub_field('block_title');
+        $textcontent = get_sub_field('textcontent');
+        $cta_buttons = get_sub_field('cta_buttons');
+        $column_content = get_sub_field('column_content');
+        $has_swoosh = get_sub_field('has_swoosh');
+        $swoosh = '';
+        if($has_swoosh) {
+          $swoosh_color = get_sub_field('swoosh_color_column_w_numbers');
+          $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+        }
+      ?>
+      <section id="section-three_columns_with_numbers-<?php echo $i ?>" class="repeatable-block section-three_columns_with_numbers">
+        <div class="wrapper">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <?php if ($textcontent || $cta_buttons) { ?>
+            <div class="blockText">
+
+              <?php if ($textcontent) { ?>
+              <div class="textwrap">
+                <?php echo $textcontent ?>    
+              </div>
+              <?php } ?>
+
+              <?php if ($column_content) { ?>
+              <div class="column-content">
+                <div class="flexwrap">
+                <?php foreach ($column_content as $col) { 
+                  $number = $col['number_title'];
+                  $description = $col['description'];
+                  if($number) { ?>
+                  <div class="fxcol">
+                    <?php if ($number) { ?>
+                    <div class="number"><span><em><?php echo $number ?></em></span></div> 
+                    <?php } ?>
+                    <?php if ($description) { ?>
+                    <div class="text"><?php echo $description ?></div> 
+                    <?php } ?>
+                  </div>
+                  <?php } ?>
+                <?php } ?>
+                 </div> 
+              </div>
+              <?php } ?>
+
+              <?php if ($cta_buttons) { ?>
+                <div class="buttons-block center">
+                  <?php foreach ($cta_buttons as $cta) { 
+                    $btn = $cta['button'];
+                    $btnlink = (isset($btn['url']) && $btn['url']) ? $btn['url'] : '';
+                    $btntitle = (isset($btn['title']) && $btn['title']) ? $btn['title'] : '';
+                    $btntarget = (isset($btn['target']) && $btn['target']) ? $btn['target'] : '_self';
+                    if($btntitle && $btnlink) { ?>
+                      <a href="<?php echo $btnlink ?>" target="<?php echo $btntarget ?>" class="button"><?php echo $btntitle ?></a>
+                    <?php } ?>
+                  <?php } ?>
+                </div>
+              <?php } ?>
+            </div>
+          <?php } ?>
+        </div>
+      </section>
+    <?php } ?>
+
+
+    <?php if( get_row_layout() == 'heart_middle_section' ) { ?>
+      <?php  
+        $block_title = get_sub_field('block_title');
+        $contents = get_sub_field('content');
+        $has_swoosh = get_sub_field('has_swoosh');
+        $swoosh = '';
+        if($has_swoosh) {
+          $swoosh_color = get_sub_field('swoosh_color_heart_middle');
+          $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+        }
+
+      if($contents) { $count = count($contents);  ?>
+      <section id="section-heart_middle_section-<?php echo $i ?>" class="repeatable-block section-heart_middle_section numrows-<?php echo ($count) ?>">
+        <div class="section-inner">
+          <div class="flexwrap">
+          <?php $n=1; foreach ($contents as $con) { 
+            $has_title = $con['prepend_title'];
+            $text = $con['text'];
+            $image = $con['image'];
+            $columnClass = ($text && $image) ? 'half':'full';
+            $columnClass .= ($n % 2) ? ' odd':' even';
+            ?>
+            <?php if ($text || $image) { ?>
+            <div class="fxcol <?php echo $columnClass ?>">
+              <?php if ($text) { ?>
+                <div class="textBox">
+                  <?php if ($has_title) { ?>
+                    <?php if ($block_title) { ?>
+                      <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+                    <?php } ?>
+                  <?php } ?>
+                  <div class="text">
+                    <?php echo anti_email_spam($text) ?>
+                  </div>
+                </div>    
+              <?php } ?>  
+              <?php if ($image) { ?>
+                <figure class="imageBox">
+                  <img src="<?php echo $image['url'] ?>" alt="<?php echo $image['title'] ?>">
+                </figure>    
+              <?php } ?>  
+            </div>
+            <?php } ?>
+          <?php $n++; } ?>
+          </div>
+        </div>
+        <span class="heart-graphic"></span>
+      </section>
+      <?php } ?>
+    <?php } ?>
 
   <?php $i++; endwhile; ?>
 <?php } ?>

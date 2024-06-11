@@ -33,3 +33,18 @@
 .acf-field[data-name="flexible_content"] [data-layout="gallery_block"] [data-name="bgcolor"] {
   width: 75%;
 }
+[data-layout="heart_middle_section"] .acf-field-true-false[data-name="prepend_title"] {
+  min-height: 60px!important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+[data-layout="heart_middle_section"] .acf-field-true-false[data-name="prepend_title"] .acf-label {
+  position: absolute;
+  left: 39px;
+  top: 17px;
+}
+[data-layout="heart_middle_section"] .acf-field-wysiwyg[data-name="text"] .acf-label {
+  display: none;
+}
