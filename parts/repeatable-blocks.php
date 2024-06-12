@@ -572,18 +572,42 @@
           <?php } ?>
           <div class="flexwrap">
           <?php $v=1; foreach ($contents as $con) { 
+              $featured_image = $con['featured_image'];
               $text = $con['textcontent'];
               $highlight = $con['highlight_box'];
+              $cta_buttons = $con['cta_buttons'];
               $fxclass = ($v % 2) ? ' odd':' even';
               $fxclass .= ($v==1) ? ' first':'';
               if($highlight) {
                 $fxclass .= ' highlight';
               }
+              if($featured_image) {
+                $fxclass .= ' has-image';
+              }
               if($text) { ?>
               <div class="fxcol <?php echo $fxclass ?>">
                 <div class="inner">
+                  <?php if ($featured_image) { ?>
+                  <figure class="feat-image">
+                    <img src="<?php echo $featured_image['url'] ?>" alt="<?php echo $featured_image['title'] ?>">
+                  </figure>
+                  <?php } ?>
                   <div class="text">
                     <?php echo anti_email_spam($text) ?>
+
+                    <?php if ($cta_buttons) { ?>
+                    <div class="buttons-block">
+                      <?php foreach ($cta_buttons as $cta) { 
+                        $btn = $cta['button'];
+                        $btnlink = (isset($btn['url']) && $btn['url']) ? $btn['url'] : '';
+                        $btntitle = (isset($btn['title']) && $btn['title']) ? $btn['title'] : '';
+                        $btntarget = (isset($btn['target']) && $btn['target']) ? $btn['target'] : '_self';
+                        if($btntitle && $btnlink) { ?>
+                          <div><a href="<?php echo $btnlink ?>" target="<?php echo $btntarget ?>" class="button"><?php echo $btntitle ?></a></div>
+                        <?php } ?>
+                      <?php } ?>
+                    </div>
+                    <?php } ?>
                   </div>
                 </div>
               </div>
