@@ -448,5 +448,109 @@
       <?php } ?>
     <?php } ?>
 
+    <?php if( get_row_layout() == 'video_text_block' ) { ?>
+      <?php  
+      $block_title = get_sub_field('block_title');
+      $contents = get_sub_field('content');
+      $has_swoosh = get_sub_field('has_swoosh');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color_heart_middle');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
+      if($contents) { ?>
+      <section id="section-video_text_block-<?php echo $i ?>" class="repeatable-block section-video_text_block">
+        <div class="section-inner">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <div class="columns">
+          <?php $n=1; foreach ($contents as $con) { 
+            $videoUrl = $con['video_url'];
+            $video_thumbnail = $con['video_thumbnail'];
+            $text = $con['text'];
+            $columnClass = ($videoUrl && $text) ? 'half':'full';
+            $columnClass .= ($n % 2) ? ' odd':' even'; ?>
+            <div class="flexwrap <?php echo $columnClass ?>">
+              <?php if ($videoUrl) { 
+                $video_class = '';
+                if (strpos($videoUrl, 'vimeo') !== false) {
+                  $video_class = 'vimeo';
+                }
+                else if ( (strpos($videoUrl, 'youtube.com') !== false) || (strpos($videoUrl, 'youtu.be')!== false) ) {
+                  $video_class = 'youtube';
+                }
+                if($video_thumbnail) {
+                  $video_class .= ' has-thumbnail';
+                }
+                ?>
+                <figure class="videoCol <?php echo $video_class ?>">
+                  <a href="<?php echo $videoUrl ?>" data-fancybox>
+                    <?php if ($video_thumbnail) { ?>
+                      <img src="<?php echo $video_thumbnail['url'] ?>" alt="<?php echo $video_thumbnail['title'] ?>">
+                    <?php } ?>
+                  </a>
+                </figure>  
+              <?php } ?>
+              <?php if ($text) { ?>
+              <div class="textCol">
+                <div class="inner"><?php echo anti_email_spam($text) ?></div>
+              </div>
+              <?php } ?>
+            </div>
+          <?php $n++; } ?>
+          </div>
+        </div>
+      </section>
+      <?php } ?>
+    <?php } ?>
+
+
+    <?php if( get_row_layout() == 'two_column_large_title' ) { ?>
+      <?php  
+      $block_title = get_sub_field('block_title');
+      $contents = get_sub_field('content');
+      $has_swoosh = get_sub_field('has_swoosh');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color_heart_middle');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
+      
+      ?>
+      <?php if ($contents) { ?>
+      <section id="section-two_column_large_title-<?php echo $i ?>" class="repeatable-block section-two_column_large_title">
+        <div class="section-inner">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <div class="columns">
+          <?php $i=1; foreach ($contents as $con) { 
+              $large_text = $con['large_text'];
+              $normal_text = $con['normal_text'];
+              $columnClass = ($large_text && $normal_text) ? 'half':'full';
+              $columnClass .= ($i % 2) ? ' odd':' even';
+              $columnClass .= ($i==1) ? ' first':'';
+            ?>
+            <div class="flexwrap <?php echo $columnClass ?>">
+              <?php if ($large_text) { ?>
+              <div class="fxcol left">
+                <div class="inner"><?php echo $large_text ?></div>  
+              </div>
+              <?php } ?>
+              <?php if ($normal_text) { ?>
+              <div class="fxcol right">
+                <div class="inner"><?php echo $normal_text ?></div>
+              </div>
+              <?php } ?>
+            </div>
+          <?php $i++; } ?>
+          </div>
+        </div>
+      </section>
+      <?php } ?>
+    <?php } ?>
+
+
   <?php $i++; endwhile; ?>
 <?php } ?>

@@ -128,6 +128,8 @@ jQuery(document).ready(function ($) {
       $('.popupContainer .popupInner').removeClass('zoomOut').addClass('fadeInDown');
     },600);
   }
+  
+
 
 }); 
 

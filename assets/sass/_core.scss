@@ -1076,6 +1076,212 @@ h6 {font-size: 28px;}
   }
 }
 
+.section-video_text_block {
+  .flexwrap {
+    background: $lightblue;
+    color: #FFF;
+  }
+  .flexwrap.half {
+    .videoCol, .textCol {
+      width: 50%;
+      @media screen and (max-width: 960px) {
+        width: 100%;
+      }
+    }
+    .videoCol {
+      margin: 0 0;
+      a {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 100%;
+        background-color: #000;
+        &:before, &:after {
+          transition: all ease .3s;
+        }
+        &:before {
+          content:"";
+          display: block;
+          width: 90px;
+          height: 90px;
+          background-image: url('assets/img/play.svg');
+          background-size: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          z-index: 5;
+        }
+        &:after {
+          content:"";
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          background: rgba(0,0,0,.35);
+        }
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+        &:hover, &:focus {
+          &:before {
+            transform: translateX(-50%) translateY(-50%) scale(1.2);
+          }
+        }
+      }
+    }
+    .textCol {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 50px 5vw;
+      @media screen and (min-width:1300px) {
+        padding: 50px 6vw;
+      }
+      @media screen and (max-width: 768px) {
+        padding: 40px 30px;
+      }
+      .inner {
+        width: 100%;
+      }
+    }
+    @media screen and (min-width: 961px) {
+      &.even {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}
+
+.section-two_column_large_title {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  .fxcol.left {
+    p {
+      font-family: $font_secondary;
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0 0;
+      color: $primary;
+    }
+  }
+  .columns {
+    @media screen and (max-width: 960px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+  .flexwrap {
+    padding-top: 50px;
+    color: $primary;
+    margin: 30px 0;
+    @media screen and (min-width: 961px) {
+      padding-left: 6vw;
+      padding-right: 6vw;
+    }
+    .inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      height: 100%;
+      p {
+        margin-top: 0;
+      }
+    }
+    strong {
+      font-weight: 400;
+      color: #808184;
+    }
+    @media screen and (max-width: 960px) {
+      border-top: 1px solid $secondary;
+    }
+  }
+  .flexwrap.first {
+    border-top: none;
+    padding-top: 20px;
+  }
+  .flexwrap.half {
+    .fxcol {
+      &.left {
+        width: 30%;
+        padding-right: 4vw;
+        border-right: 1px solid $secondary;
+      }
+      &.right {
+        width: 70%;
+        padding-left: 4vw;
+      }
+    }
+
+    &.even {
+      flex-direction: row-reverse;
+      .fxcol.left {
+        padding-left: 4vw;
+        padding-right: 0;
+        border-right: none;
+        border-left: 1px solid $secondary;
+      }
+      .fxcol.right {
+        padding-left: 0;
+        padding-right: 4vw;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+    .flexwrap.half  {
+      .fxcol {
+        &.left {
+          width: 40%;
+          p {
+            font-size: 2.5rem;
+          }
+        }
+        &.right {
+          width: 60%;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    .flexwrap.half {
+      .fxcol {
+        width: 100%!important;
+        padding-left: 0!important;
+        padding-right: 0!important;
+        border-left: none!important;
+        border-right: none!important;
+      }
+      .fxcol.left {
+        margin-bottom: 30px;
+      }
+    }
+    
+  }
+
+  @media screen and (max-width: 768px) {
+    .fxcol.left p {
+      font-size: 2rem;
+    }
+  }
+}
+
+
+
 @media screen and (max-width: 960px) {
   .navOverlay {
     position: fixed;
