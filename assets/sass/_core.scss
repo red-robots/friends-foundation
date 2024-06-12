@@ -1280,7 +1280,78 @@ h6 {font-size: 28px;}
   }
 }
 
+.section-three_column_boxed_shadow {
+  padding-top: 70px;
+  padding-bottom:80px;
+  .flexwrap {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    .fxcol {
+      width: 33.33%;
+      padding: 10px;
+      .inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        padding: 35px 3vw 30px;
+        color: $primary;
+        border: 1px solid #dcdcdc;
+        box-shadow: 0 2px 5px rgba(0,0,0,.15);
+        .text {
+          width: 100%;
+        }
+        a {
+          color: $secondary;
+          &:hover {
+            opacity: 0.8;
+            text-decoration: none;
+          }
+        }
+      }
+      h3 {
+        color: $primary;
+        font-family: $font_secondary!important;
+        font-size: 1.85rem;
+        font-weight: 500;
+        line-height: 1.2;
+        margin: 0 0 20px;
+      }
+      &.highlight {
+        .inner {
+          border: 1px solid $primary;
+          background-color: $primary;
+          color: #FFF;
+        }
+      }
+    }
+  }
+  &.count-2 {
+    .flexwrap {
+      .fxcol {
+        width: 50%;
+      }
+    }
+  }
 
+  @media screen and (max-width: 1024px) {
+    .flexwrap {
+      .fxcol {
+        width: 50%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .flexwrap {
+      .fxcol {
+        width:100%;
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 960px) {
   .navOverlay {

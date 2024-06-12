@@ -552,5 +552,49 @@
     <?php } ?>
 
 
+    <?php if( get_row_layout() == 'three_column_boxed_shadow' ) { ?>
+      <?php  
+      $block_title = get_sub_field('block_title');
+      $contents = get_sub_field('content');
+      $has_swoosh = get_sub_field('has_swoosh');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color_heart_middle');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
+      
+      ?>
+      <?php if ($contents) { $count = count($contents); ?>
+      <section id="section-three_column_boxed_shadow-<?php echo $i ?>" class="repeatable-block section-three_column_boxed_shadow count-<?php echo $count ?>">
+        <div class="section-inner">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <div class="flexwrap">
+          <?php $v=1; foreach ($contents as $con) { 
+              $text = $con['textcontent'];
+              $highlight = $con['highlight_box'];
+              $fxclass = ($v % 2) ? ' odd':' even';
+              $fxclass .= ($v==1) ? ' first':'';
+              if($highlight) {
+                $fxclass .= ' highlight';
+              }
+              if($text) { ?>
+              <div class="fxcol <?php echo $fxclass ?>">
+                <div class="inner">
+                  <div class="text">
+                    <?php echo anti_email_spam($text) ?>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+          <?php $v++; } ?>
+          </div>
+        </div>
+      </section>
+      <?php } ?>
+    <?php } ?>
+
+
   <?php $i++; endwhile; ?>
 <?php } ?>

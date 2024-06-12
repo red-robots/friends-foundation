@@ -48,3 +48,16 @@
 [data-layout="heart_middle_section"] .acf-field-wysiwyg[data-name="text"] .acf-label {
   display: none;
 }
+[data-name="content"] .acf-field-true-false[data-name="highlight_box"]{
+  top: 4px;
+  position: relative;
+}
+[data-name="content"] .acf-field-true-false[data-name="highlight_box"] .acf-input {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+[data-name="content"] .acf-field-true-false[data-name="highlight_box"] .acf-label {
+  padding-left: 22px;
+}
+
