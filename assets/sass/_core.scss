@@ -1528,7 +1528,17 @@ h6 {font-size: 28px;}
   }
   .flexwrap {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    .footer-extra-info {
+      margin: 0 0 10px;
+      p {
+        margin: 0 0 15px;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
     .footcol {
       // width: 33.333%;
       display: flex;

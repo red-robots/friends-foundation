@@ -1446,7 +1446,10 @@ h6{font-size:28px}
 .site-footer a:not(.button){color:#fff;display:inline-block;-webkit-transition:all ease .3s;transition:all ease .3s}
 .site-footer a:not(.button):hover,.site-footer a:not(.button):focus{opacity:.5}
 .site-footer a:not(.button):focus{outline:1px dotted #fff}
-.site-footer .flexwrap{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.site-footer .flexwrap{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.site-footer .flexwrap .footer-extra-info{margin:0 0 10px}
+.site-footer .flexwrap .footer-extra-info p{margin:0 0 15px}
+.site-footer .flexwrap .footer-extra-info p:last-child{margin-bottom:0}
 .site-footer .flexwrap .footcol{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .site-footer .flexwrap .footcol.footLogo{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}
 .site-footer .flexwrap .footcol.footLogo figure{margin:0;width:120px}

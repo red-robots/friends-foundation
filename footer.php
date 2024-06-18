@@ -2,6 +2,7 @@
 
   <?php 
     $footLogo = get_field('footer_logo','option'); 
+    $footer_other_info = get_field('footer_other_info','option'); 
     $address = get_field('address','option'); 
     $email = get_field('email','option'); 
     $phone = get_field('phone','option'); 
@@ -25,7 +26,7 @@
            <?php } ?>
           </div>
 
-         <?php if ($address || $email || $phone) { ?>
+         <?php if ($address || $email || $phone || $footer_other_info) { ?>
           <div class="footcol branches">
             <div class="company-info">
               <?php if ($address) { ?>
@@ -40,6 +41,12 @@
                 </span>
               <?php } ?>
             </div>
+
+            <?php if ($footer_other_info) { ?>
+            <div class="footer-extra-info">
+              <?php echo anti_email_spam($footer_other_info); ?>
+            </div>
+            <?php } ?>
             <div class="copyright-info">
               <span class="copyright">&copy; <?php echo get_bloginfo('name') ?></span>
               <span class="poweredby">Website by <a href="https://bellaworksweb.com/" target="_blank">Bellaworks</a></span>
