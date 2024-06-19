@@ -1322,6 +1322,8 @@ h6{font-size:28px}
 .repeatable-block .buttons-block.center{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .section-two_column_text_image .textCol{padding:40px;text-align:center;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;min-height:400px;overflow:visible;position:relative;z-index:5}
 .section-two_column_text_image .textCol p{font-weight:300}
+.section-two_column_text_image .textCol a{display:inline-block;text-decoration:underline;color:#fff !important;-webkit-transition:all ease .3s;transition:all ease .3s}
+.section-two_column_text_image .textCol a:hover,.section-two_column_text_image .textCol a:focus{opacity:.8;text-decoration:none;-webkit-transform:translateY(-2px);transform:translateY(-2px)}
 .section-two_column_text_image .textCol .inner{max-width:1000px;width:100%;margin:0 auto}
 .section-two_column_text_image .textCol{min-height:700px}
 .section-two_column_text_image .imageCol figure{margin:0;position:relative}
