@@ -476,7 +476,6 @@ h6 {font-size: 28px;}
       color: #FFF!important;
       transition: all ease .3s;
       &:hover, &:focus {
-        // color: $secondary!important;
         opacity: 0.8;
         text-decoration: none;
         transform: translateY(-2px);
@@ -1159,6 +1158,17 @@ h6 {font-size: 28px;}
       flex-wrap: wrap;
       align-items: center;
       padding: 50px 5vw;
+      a {
+        display: inline-block;
+        text-decoration: underline;
+        color: #FFF!important;
+        transition: all ease .3s;
+        &:hover, &:focus {
+          opacity: 0.8;
+          text-decoration: none;
+          transform: translateY(-2px);
+        }
+      }
       @media screen and (min-width:1300px) {
         padding: 50px 6vw;
       }
