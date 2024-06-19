@@ -1481,6 +1481,8 @@ h6{font-size:28px}
 .section-three_columns_with_numbers{padding-top:40px;padding-bottom:60px;background:#54abdf}
 .section-three_columns_with_numbers .blockTitle{color:#fff}
 .section-three_columns_with_numbers .buttons-block{margin-top:15px}
+.section-three_columns_with_numbers .textcontent-bottom{max-width:1000px;width:100%;margin:0 auto 30px;color:#124f9e;font-size:1.15rem;letter-spacing:.035em;line-height:1.5}
+.section-three_columns_with_numbers .textcontent-bottom *{font-size:1.15rem;letter-spacing:.035em;line-height:1.5}
 .section-three_columns_with_numbers .textwrap{color:#124f9e;margin-bottom:35px}
 .section-three_columns_with_numbers .textwrap *{font-size:1.15rem;letter-spacing:.035em;line-height:1.5}
 .section-three_columns_with_numbers .flexwrap{margin-left:-20px;margin-right:-20px;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
@@ -1521,6 +1523,7 @@ body:not(.home) #primary #main{background-color:#f6f7f8}
 .section-three_column_block .flexbox .flexcol{padding:30px 40px}
 .section-boxes_checkboxes .column-content-checkboxes .textCol{padding:8vw 6vw}
 .section-video_text_block .flexwrap.half .textCol{padding:50px 6vw}
+.section-three_columns_with_numbers .textcontent-bottom{max-width:60vw}
 .testimonials-section .flexcol{padding-left:5vw;padding-right:5vw}
 }@media screen and (min-width:1500px){.section-three_columns_with_numbers{padding-top:70px;padding-bottom:90px}
 }@media screen and (min-width:1600px){.section-three_columns_with_numbers .fxcol{padding:20px 5vw}

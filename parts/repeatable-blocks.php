@@ -333,6 +333,7 @@
       <?php  
         $block_title = get_sub_field('block_title');
         $textcontent = get_sub_field('textcontent');
+        $textcontent_bottom = get_sub_field('textcontent_bottom');
         $cta_buttons = get_sub_field('cta_buttons');
         $column_content = get_sub_field('column_content');
         $has_swoosh = get_sub_field('has_swoosh');
@@ -374,6 +375,14 @@
                   <?php } ?>
                 <?php } ?>
                  </div> 
+              </div>
+              <?php } ?>
+
+              <?php if ($textcontent_bottom) { ?>
+              <div class="textcontent-bottom">
+                <div class="textcontent-inner">
+                  <?php echo anti_email_spam($textcontent_bottom); ?>
+                </div>
               </div>
               <?php } ?>
 
