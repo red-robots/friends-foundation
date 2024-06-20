@@ -64,7 +64,20 @@
  *  Date Modified: 04.18.2024
  */
 jQuery(document).ready(function ($) {
+  $('.main-navigation #primary-menu-list li').each(function () {
+    if ($(this).hasClass('menu-item-has-children')) {
+      if ($(this).find('ul.sub-menu').length) {
+        var subMenu = $(this).find('ul.sub-menu');
+        $('<button class="dropdown-toggle" aria-label="Dropdown Items"><span></span></button>').insertBefore(subMenu);
+      }
+    }
+  });
+  $(document).on('click', '.main-navigation .dropdown-toggle', function () {
+    $(this).next().slideToggle();
+    $(this).toggleClass('active');
+  });
   /* Slideshow */
+
   var swiper = new Swiper('#slideshow', {
     effect: 'fade',
 
