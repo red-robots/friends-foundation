@@ -628,6 +628,54 @@
       <?php } ?>
     <?php } ?>
 
+    <?php if( get_row_layout() == 'stats_section' ) { ?>
+      <?php  
+      $block_title = get_sub_field('block_title');
+      $contents = get_sub_field('content');
+      $has_swoosh = get_sub_field('has_swoosh');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color_stats');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
+      
+      ?>
+      <?php if ($contents) { $count = count($contents); ?>
+      <section id="section-stats_section-<?php echo $i ?>" class="repeatable-block section-stats_section count-<?php echo $count ?>">
+        <div class="section-inner">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <div class="flexwrap">
+          <?php $v=1; foreach ($contents as $con) { 
+              $top_text = $con['top_text'];
+              $large_text = $con['large_text'];
+              $bottom_text = $con['bottom_text'];
+              $item_class = ($top_text) ? 'has-top-text':'no-top-text';
+              if($top_text || $large_text || $bottom_text) { ?>
+              <div class="fxcol <?php echo $item_class ?>">
+                <div class="wrap">
+                  <div class="inner">
+                    <?php if ($top_text) { ?>
+                     <div class="top-text"><?php echo $top_text ?></div> 
+                    <?php } ?>
+                    <?php if ($large_text) { ?>
+                     <div class="large-text"><?php echo $large_text ?></div> 
+                    <?php } ?>
+                    <?php if ($bottom_text) { ?>
+                     <div class="bottom-text"><?php echo $bottom_text ?></div> 
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+          <?php $v++; } ?>
+          </div>
+        </div>
+      </section>
+      <?php } ?>
+    <?php } ?>
+
 
   <?php $i++; endwhile; ?>
 <?php } ?>
