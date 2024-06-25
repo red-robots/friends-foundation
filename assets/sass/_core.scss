@@ -704,7 +704,6 @@ h6 {font-size: 28px;}
         width: 100%;
         padding-bottom: 100%;
         overflow: hidden;
-        border-radius: 100%;
         color: #000;
       }
       img {
@@ -715,7 +714,6 @@ h6 {font-size: 28px;}
         left: 0;
         object-fit: cover;
         object-position: center;
-        border-radius: 100%;
       }
       a.inner {
         text-decoration: none;
@@ -728,11 +726,14 @@ h6 {font-size: 28px;}
     }
     &.rounded-images {
       figure {
-
+        .inner, img {
+          border-radius: 100%;
+        }
       }
     }
   }
 }
+
 
 .section-fullwidth_text_block {
   padding-top: 60px;
