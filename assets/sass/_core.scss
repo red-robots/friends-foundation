@@ -2282,5 +2282,51 @@ body:not(.home) {
   }
 }
 
+body.error404 {
+  #content {
+    background-color: #f6f7f8;
+    #main {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      text-align: center;
+      .small-title {
+        font-size: 2rem;
+        color: $secondary;
+      }
+      .page-title {
+        font-family: $font_secondary!important;
+        color: $primary;
+        margin-top: 0;
+      }
+    }
+  }
+}
+.sitemap-links > ul {
+  display: inline-block;
+  text-align: left;
+  @media screen and (min-width: 961px) {
+    display: inline-block;
+    column-count: 2;
+    column-gap: 2em;
+  }
+  a {
+    display: inline-block;
+    transition: all ease .3s;
+    &:hover, &:focus {
+      color: $secondary;
+    }
+  }
+}
+.sitemap-links > ul > li::marker {
+  color: $secondary;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.sitemap-links > ul > li ul li::marker {
+  color: $secondary;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
 
 

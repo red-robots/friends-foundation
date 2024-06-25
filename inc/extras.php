@@ -377,14 +377,15 @@ function ea_disable_editor( $id = false ) {
    *
    */
   function ea_disable_gutenberg( $can_edit, $post_type ) {
+    $var_type = ( isset($_GET['post']) && $_GET['post'] ) ? $_GET['post'] : 'post';
 
     $exclude_posttypes = array('team','events');
-    $ptype = get_post_type($_GET['post']);
+    $ptype = get_post_type($var_type);
   
-    if( ! ( is_admin() && !empty( $_GET['post'] ) ) )
+    if( ! ( is_admin() && !empty( $var_type ) ) )
       return $can_edit;
   
-    if( ea_disable_editor( $_GET['post'] ) )
+    if( ea_disable_editor( $var_type ) )
       $can_edit = false;
     
     if( in_array($ptype, $exclude_posttypes) )

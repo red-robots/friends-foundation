@@ -17,15 +17,15 @@ function js_custom_init() {
       //   'menu_position'=> 5,
       //   'supports'  => array('title','editor','thumbnail'),
       // ),
-      // array(
-      //   'post_type' => 'team',
-      //   'menu_name' => 'Team',
-      //   'plural'    => 'Team',
-      //   'single'    => 'Team',
-      //   'menu_icon' => 'dashicons-businessman',
-      //   'menu_position'=> 5,
-      //   'supports'  => array('title','editor')
-      // )
+      array(
+        'post_type' => 'ff-events',
+        'menu_name' => 'Events',
+        'plural'    => 'Events',
+        'single'    => 'Event',
+        'menu_icon' => 'dashicons-calendar-alt',
+        'menu_position'=> 20,
+        'supports'  => array('title','editor')
+      ),
       array(
         'post_type' => 'testimonials',
         'menu_name' => 'Testimonials',
@@ -173,31 +173,12 @@ function set_custom_cpt_columns($columns) {
     $query = isset($wp_query->query) ? $wp_query->query : '';
     $post_type = ( isset($query['post_type']) ) ? $query['post_type'] : '';
     
-    if($post_type=='team') {
+    if($post_type=='ff-events') {
         unset($columns['date']);
-        $columns['title'] = __( 'Name', 'bellaworks' );
-        $columns['jobtitle'] = __( 'Job Title', 'bellaworks' );
-        $columns['image'] = __( 'Image', 'bellaworks' );
-        $columns['date'] = __( 'Date', 'bellaworks' );
-    }
-    else if($post_type=='projects') {
-        unset($columns['date']);
-        $columns['title'] = __( 'Title', 'bellaworks' );
-        $columns['location'] = __( 'Location', 'bellaworks' );
-        $columns['image'] = __( 'Featured Image', 'bellaworks' );
-        $columns['date'] = __( 'Date', 'bellaworks' );
-    }
-    else if($post_type=='post') {
-      unset($columns['author']);
-      unset($columns['categories']);
-      unset($columns['tags']);
-      unset($columns['date']);
-      $columns['title'] = __( 'Title', 'bellaworks' );
-      $columns['featured'] = __( 'Featured Story', 'bellaworks' );
-      $columns['author'] = __( 'Author', 'bellaworks' );
-      $columns['categories'] = __( 'Categories', 'bellaworks' );
-      $columns['tags'] = __( 'Tags', 'bellaworks' );
-      $columns['date'] = __( 'Date', 'bellaworks' );
+        $columns['title'] = __( 'Event Name', 'bellaworks' );
+        $columns['event_date'] = __( 'Event Date', 'bellaworks' );
+        $columns['event_image'] = __( 'Event Photo', 'bellaworks' );
+        $columns['date'] = __( 'Publish', 'bellaworks' );
     }
 
     return $columns;
@@ -210,15 +191,20 @@ function custom_post_column( $column, $post_id ) {
     $query = isset($wp_query->query) ? $wp_query->query : '';
     $post_type = ( isset($query['post_type']) ) ? $query['post_type'] : '';
     
-    if($post_type=='team') {
+    if($post_type=='ff-events') {
         switch ( $column ) {
-          case 'jobtitle' :
-            if( $job_title = get_field('job_title',$post_id) ) {
-              echo $job_title;
+          case 'event_date' :
+            if( $event_date = get_field('start_date',$post_id) ) {
+              $time = get_field('time',$post_id);
+              $event_date = date('F j, Y', strtotime($event_date));
+              if($time) {
+                $event_date .= '<div>'.$time.'</div>';
+              }
+              echo $event_date;
             }
             break;
-          case 'image' :
-            $img = get_field('photo',$post_id);
+          case 'event_image' :
+            $img = get_field('featured_photo',$post_id);
             $img_src = ($img) ? $img['sizes']['medium'] : '';
             $the_photo = '<span class="tmphoto" style="display:inline-block;width:50px;height:50px;background:#e2e1e1;text-align:center;border:1px solid #CCC;overflow:hidden;">';
             if($img_src) {
@@ -231,42 +217,6 @@ function custom_post_column( $column, $post_id ) {
             break;
         }
     }
-
-    else if($post_type=='projects') {
-      switch ( $column ) {
-        case 'location' :
-          if( $project_location = get_field('project_location',$post_id) ) {
-            echo $project_location;
-          }
-          break;
-
-        case 'image' :
-          $featured = get_field('featured_story',$post_id);
-          $thumbnail_id = get_post_thumbnail_id($post_id);
-          $img_src = wp_get_attachment_image_url($thumbnail_id);
-          $the_photo = '<span class="tmphoto" style="display:inline-block;width:50px;height:50px;background:#e2e1e1;text-align:center;border:1px solid #CCC;overflow:hidden;">';
-          if($img_src) {
-             $the_photo .= '<span style="display:block;width:100%;height:100%;background-image:url('.$img_src.');background-size:cover;background-position:center;background-repeat:no-repeat;transform:scale(1.2)"></span>';
-          } else {
-              $the_photo .= '<i class="dashicons dashicons-format-image" style="font-size:25px;position:relative;top:13px;left: -3px;opacity:0.3;"></i>';
-          }
-          $the_photo .= '</span>';
-          echo $the_photo;
-          break;
-      }
-    }
-
-    else if($post_type=='post') {
-      switch ( $column ) {
-        case 'featured' :
-          $featured = get_field('featured_story',$post_id);
-          if($featured) {
-            echo '<div title="Featured Story" class="dashicons dashicons-star-filled" style="color: #ecb618; font-size: 27px; position: relative; top: 7px;"></div>';
-          }
-          break;
-      }
-    }
-    
 }
 
 
