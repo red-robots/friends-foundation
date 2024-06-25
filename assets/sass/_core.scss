@@ -1448,12 +1448,12 @@ h6 {font-size: 28px;}
   .flexwrap {
     justify-content: center;
     .fxcol {
-      width: 33.333%;
+      width: 30%;
       padding: 20px;
       position: relative;
       @media screen and (min-width: 1400px) {
-        padding-left: 2vw;
-        padding-right: 2vw;
+        padding-left: 2.3vw;
+        padding-right: 2.3vw;
       }
       .wrap {
         position: relative;

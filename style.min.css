@@ -1452,7 +1452,7 @@ h6{font-size:28px}
 .section-stats_section{padding:60px 20px 80px}
 .section-stats_section .section-inner{max-width:1280px;width:100%;margin:0 auto}
 .section-stats_section .flexwrap{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
-.section-stats_section .flexwrap .fxcol{width:33.333%;padding:20px;position:relative}
+.section-stats_section .flexwrap .fxcol{width:30%;padding:20px;position:relative}
 .section-stats_section .flexwrap .fxcol .wrap{position:relative;padding-bottom:100%}
 .section-stats_section .flexwrap .fxcol .inner{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:100%;background:#124f9e;color:#fff;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center;padding:20px 30px}
 .section-stats_section .flexwrap .fxcol .top-text,.section-stats_section .flexwrap .fxcol .large-text,.section-stats_section .flexwrap .fxcol .bottom-text{width:100%;text-align:center}
@@ -1555,7 +1555,7 @@ body.error404 #content #main .page-title{font-family:"BigCaslon","Times",serif !
 .section-video_text_block .flexwrap.half .textCol{padding:50px 6vw}
 .section-three_columns_with_numbers .textcontent-bottom{max-width:60vw}
 .testimonials-section .flexcol{padding-left:5vw;padding-right:5vw}
-}@media screen and (min-width:1400px){.section-stats_section .flexwrap .fxcol{padding-left:2vw;padding-right:2vw}
+}@media screen and (min-width:1400px){.section-stats_section .flexwrap .fxcol{padding-left:2.3vw;padding-right:2.3vw}
 .section-stats_section .flexwrap .fxcol .inner{padding-left:2vw;padding-right:2vw}
 }@media screen and (min-width:1500px){.section-three_columns_with_numbers{padding-top:70px;padding-bottom:90px}
 }@media screen and (min-width:1600px){.section-three_columns_with_numbers .fxcol{padding:20px 5vw}
