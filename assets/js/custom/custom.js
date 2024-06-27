@@ -142,6 +142,19 @@ jQuery(document).ready(function ($) {
     },600);
   }
   
+  //ANNOUNCEMENT BAR
+  $('.announcementClose').click(function(e){
+    e.preventDefault();
+    sessionStorage.setItem("friends-foundation-announcement", "hide");
+    $('.announcementBar').hide();
+  });
+
+  if( typeof sessionStorage.getItem("friends-foundation-announcement")!="undefined" ) {
+    var announcementBarStat = sessionStorage.getItem("friends-foundation-announcement");
+    if(announcementBarStat=='hide') {
+      $('.announcementBar').remove();
+    }
+  }
 
 
 }); 
