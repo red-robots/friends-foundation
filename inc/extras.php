@@ -47,6 +47,9 @@ function bellaworks_body_classes( $classes ) {
         return $GLOBALS[$browser];
     }));
 
+    if( has_shortcode( $post->post_content, 'events_listing' ) ) {
+      $classes[] = 'has-shortcode-events_listing';
+    }
     return $classes;
 }
 add_filter( 'body_class', 'bellaworks_body_classes' );
@@ -702,6 +705,22 @@ function page_has_hero() {
   }
   return $is_true;
 }
+
+
+add_shortcode( 'events_listing', 'events_listing_func' );
+function events_listing_func( $atts ) {
+  $a = shortcode_atts( array(
+      'show' => -1,
+  ), $atts );
+  $perpage = (isset($a['show']) && $a['show']) ? $a['show'] : 3;
+  $output = '';
+  ob_start();
+  include( locate_template('parts/events-listing.php') ); 
+  $output = ob_get_contents();
+  ob_end_clean();
+  return $output;
+}
+
 
 
 
