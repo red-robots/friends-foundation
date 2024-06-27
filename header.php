@@ -33,6 +33,7 @@ $featImg = wp_get_attachment_image_src($thumbId,'full'); ?>
   $heroImg = page_has_hero();
   $extraClass = ($heroImg) ? 'has-hero-image':'';
   $announcement = get_field('announcement','option');
+  $announcement_visibility = get_field('announcement_visibility','option');
   if($announcement) {
     $extraClass .= 'has-announcement-bar';
   }
@@ -40,7 +41,7 @@ $featImg = wp_get_attachment_image_src($thumbId,'full'); ?>
 <script>var assetsUrl='<?php echo get_template_directory_uri();?>/assets/';</script>
 </head>
 <body <?php body_class($extraClass); ?>>
-<?php if ($announcement) { ?>
+<?php if ($announcement && $announcement_visibility=='on') { ?>
 <div class="announcementBar">
   <div class="announcementMessage"><?php echo anti_email_spam($announcement); ?></div>
   <button class="announcementClose" aria-label="Close Announcement"></button>
