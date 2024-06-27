@@ -1555,6 +1555,12 @@ body.has-shortcode-events_listing .events-listing.past-events{margin-top:80px}
 .announcementBar .announcementClose:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
 .announcementBar .announcementClose:hover,.announcementBar .announcementClose:focus{opacity:1}
 .announcementBar .announcementClose:focus{outline:1px dotted #fff}
+.announcementBar.popup{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999999;padding:20px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;background-color:rgba(0,0,0,.5)}
+.announcementBar.popup .announcementBarInner{max-width:850px;width:100%;min-height:200px;padding:40px 30px 30px;background:#fff;color:#124f9e;border-radius:10px;position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-line-pack:center;align-content:center;-webkit-box-shadow:0 5px 20px rgba(0,0,0,.35);box-shadow:0 5px 20px rgba(0,0,0,.35)}
+.announcementBar.popup .announcementBarInner .announcementMessage{padding:0;font-size:1.2rem}
+.announcementBar.popup .announcementBarInner .announcementMessage p{font-size:1.2rem}
+.announcementBar.popup .announcementClose{top:8px;right:8px}
+.announcementBar.popup .announcementClose:before,.announcementBar.popup .announcementClose:after{background:#000}
 body:not(.home) #primary #main{background-color:#f6f7f8}
 body.error404 #content{background-color:#f6f7f8}
 body.error404 #content #main{padding-top:100px;padding-bottom:100px;text-align:center}
