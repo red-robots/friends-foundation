@@ -677,5 +677,51 @@
     <?php } ?>
 
 
+    <?php if( get_row_layout() == 'simple_columns' ) { ?>
+      <?php  
+      $block_title = get_sub_field('block_title');
+      $columns_per_row = get_sub_field('columns_per_row');
+      $per_row = ($columns_per_row) ? $columns_per_row : 3;
+      $contents = get_sub_field('simple_blocks');
+      $has_swoosh = get_sub_field('has_swoosh_simple_columns');
+      $swoosh = '';
+      if($has_swoosh) {
+        $swoosh_color = get_sub_field('swoosh_color_simple_columns');
+        $swoosh = ($swoosh_color) ? ' has-swoosh ' . $swoosh_color : ' has-swoosh red';
+      }
+      
+      ?>
+      <?php if ($contents) { $count = count($contents); ?>
+      <section id="section-simple_columns-<?php echo $i ?>" class="repeatable-block section-simple_columns colnum-<?php echo $per_row ?> count-<?php echo $count ?>">
+        <div class="section-inner">
+          <?php if ($block_title) { ?>
+            <h2 class="blockTitle<?php echo $swoosh ?>"><?php echo $block_title ?></h2>
+          <?php } ?>
+          <div class="flexwrap">
+          <?php $v=1; foreach ($contents as $con) { 
+            $title = $con['title'];
+            $description = $con['description'];
+            if($title || $description) { ?>
+            <div class="fxcol">
+              <div class="wrap">
+                <div class="inner">
+                  <?php if ($title) { ?>
+                   <div class="title"><?php echo $title ?></div> 
+                  <?php } ?>
+                  <?php if ($description) { ?>
+                   <div class="description"><?php echo $description ?></div> 
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
+            <?php } ?>
+          <?php $v++; } ?>
+          </div>
+        </div>
+      </section>
+      <?php } ?>
+    <?php } ?>
+
+
   <?php $i++; endwhile; ?>
 <?php } ?>

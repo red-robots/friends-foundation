@@ -153,7 +153,11 @@ jQuery(document).ready(function ($) {
     var announcementBarStat = sessionStorage.getItem("friends-foundation-announcement");
     if(announcementBarStat=='hide') {
       $('.announcementBar').remove();
+    } else {
+      $('.announcementBar').show();
     }
+  } else {
+    $('.announcementBar').show();
   }
 
 

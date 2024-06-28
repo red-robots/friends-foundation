@@ -203,6 +203,10 @@ jQuery(document).ready(function ($) {
 
     if (announcementBarStat == 'hide') {
       $('.announcementBar').remove();
+    } else {
+      $('.announcementBar').show();
     }
+  } else {
+    $('.announcementBar').show();
   }
 });

@@ -2275,6 +2275,98 @@ h6 {font-size: 28px;}
   }
 }
 
+.section-simple_columns {
+  padding-top: 70px;
+  padding-bottom: 20px;
+  .section-inner {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  .flexwrap {
+    display: flex;
+    flex-wrap: wrap;
+    .fxcol {
+      width: 33.333%;
+      padding: 12px;
+    }
+    .wrap {
+      padding: 30px;
+      background-color: $primary;
+      text-align: center;
+      color: #FFF;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      @media screen and (min-width:1025px) {
+        padding: 3vw 30px;
+      }
+      .title {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.3;
+        letter-spacing: 0.03em;
+      }
+      .description {
+        font-size: 18px;
+        line-height: 1.4;
+        margin-top: 5px;
+      }
+    }
+  }
+  &.count-2 {
+    .flexwrap {
+      justify-content: center;
+    }
+  }
+  &.colnum-1 {
+    .flexwrap {
+      .fxcol {
+        width: 100%;
+      }
+    }
+  }
+  &.colnum-2 {
+    .flexwrap {
+      .fxcol {
+        width: 50%;
+      }
+    }
+  }
+  &.colnum-3 {
+    .flexwrap {
+      .fxcol {
+        width: 33.333%;
+      }
+    }
+  }
+  &.colnum-4 {
+    .flexwrap {
+      .fxcol {
+        width: 25%;
+      }
+    }
+  }
+  &.colnum-5 {
+    .flexwrap {
+      .fxcol {
+        width: 20%;
+      }
+    }
+  }
+  @media screen and (max-width: 850px) {
+    .flexwrap .fxcol {
+      width: 50%!important;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .flexwrap .fxcol {
+      width: 100%!important;
+    }
+  }
+}
+
 body.has-shortcode-events_listing {
   h1.page-title {
     display: none;
@@ -2396,6 +2488,7 @@ body.has-shortcode-events_listing {
   z-index: 999;
   color: #FFF;
   background: $secondary;
+  display: none;
   .announcementMessage {
     padding: 10px 20px;
     position: relative;
