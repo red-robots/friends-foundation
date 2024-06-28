@@ -2287,7 +2287,7 @@ h6 {font-size: 28px;}
     flex-wrap: wrap;
     .fxcol {
       width: 33.333%;
-      padding: 12px;
+      padding: 10px;
     }
     .wrap {
       padding: 30px;
@@ -2299,6 +2299,7 @@ h6 {font-size: 28px;}
       flex-wrap: wrap;
       align-content: center;
       justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, .15);
       @media screen and (min-width:1025px) {
         padding: 3vw 30px;
       }
