@@ -2572,7 +2572,7 @@ body.has-shortcode-events_listing {
       max-width: 850px;
       width: 100%;
       min-height: 200px;
-      padding: 40px 30px 30px;
+      padding: 35px 30px 30px;
       background: #FFF;
       color: $primary;
       border-radius: 10px;
@@ -2584,6 +2584,7 @@ body.has-shortcode-events_listing {
       .announcementMessage {
         padding: 0 0;
         font-size: 1.2rem;
+        width: 100%;
         p {
           font-size: 1.2rem;
         }
